@@ -22,7 +22,6 @@ import subprocess
 from setuptools import setup, find_packages
 from setuptools.command.sdist import sdist
 
-from openstack.common.utils import parse_mailmap, str_dict_replace
 from {{package}} import version
 
 
@@ -52,6 +51,7 @@ version_info = {
 class local_sdist(sdist):
     """Customized sdist hook - builds the ChangeLog file from VC first"""
     def run(self):
+        from openstack.common.utils import parse_mailmap, str_dict_replace
         if os.path.isdir('.git'):
             git_log_gnu = 'git log --format="%ai %aN %n%n%x09* %s%d%n"'
             changelog = run_git_command(git_log_gnu)
