@@ -40,7 +40,7 @@ class OpenstackCommand(create_distro.CreateDistroCommand):
         # NOTE(jkoelker): Only support the *one* Openstack template
         self.options.templates = ['openstack']
 
-        # NOTE(jkoelekr): We fake out what we don't want
+        # NOTE(jkoelker): We fake out what we don't want
         self.options.list_templates = False
         self.options.list_variables = False
         self.options.config = False
