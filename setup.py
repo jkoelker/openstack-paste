@@ -2,11 +2,11 @@ from setuptools import setup, find_packages
 
 version = '0.1'
 
-setup(name='openstack.common',
+setup(name='openstack.paste',
       version=version,
-      description="Common components for Openstack",
+      description="Paste template and command for Openstack",
       long_description="""\
-Common components for Openstack including paster templates.
+Paste template and command for Openstack
 """,
       classifiers=[
           'Development Status :: 4 - Beta',
@@ -23,10 +23,14 @@ Common components for Openstack including paster templates.
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=True,
-      install_requires=[
-          # -*- Extra requirements: -*-
+      install_requires=['PasteDeploy',
+                        'PasteScript',
       ],
       entry_points="""
       # -*- Entry points: -*-
+      [paste.global_paster_command]
+      openstack = openstack.paste.commands:OpenstackCommand
+      [paste.paster_create_template]
+      openstack = openstack.paste.templates:OpenstackTemplate
       """,
       )
